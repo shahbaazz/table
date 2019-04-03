@@ -101,7 +101,7 @@
             if (inp.value !== '' && num != 'NaN' && num != 0) {
                 var i = 1;
                 do {
-                    displayText += `${num} X ${i} = <code>${num * i}</code> <br>`;
+                    displayText += num + " X " + i + " = <code>" + num * i + "</code> <br>";
                     i++
                 } while (i <= 10)
                 displayTextElement.innerHTML = displayText;
