@@ -57,14 +57,13 @@
                 <div class="col">
                     <h2 class="mb-4"> Generate TABLES with us.</h2>
                     <div class=" w-75">
-                        <div class="form-group">
+                        <div class="form-group ">
                             <label for="inp">Enter Number</label>
                             <input type="text" id="inp" class=" form-control" maxlength="5" autofocus>
                         </div>
                         <div class="btn-group mb-3 shadow">
                             <button class="btn btn-primary" onclick="generateTable()">Generate</button>
                             <button class="btn btn-danger" onclick="resetTable()">Reset</button>
-
                         </div>
                     </div>
                 </div>
@@ -79,54 +78,40 @@
     <footer class="jumbotron p-5">
         <div class="container text-light">
             <div>Created by <strong> <a href="https://www.facebook.com/Md.Shahbaaz.007"> Md Shahbaaz</a></strong></div>
-            <div>copyright 2019</div>
+            <div>copyright <span id="year"></span></div>
         </div>
     </footer>
-
-
     <script src="./vender/jquery-3.2.1.min.js"></script>
     <script src="./vender/popper.min.js"></script>
     <script src="./vender/bootstrap.min.js"></script>
     <script>
-        let inp = document.getElementById('inp')
-        let displayTextElement = document.getElementById('dynamics')
+        document.getElementById('year').innerHTML = new Date().getFullYear();
+        var inp = document.getElementById('inp');
+        var displayTextElement = document.getElementById('dynamics');
 
-        inp.onkeypress = keys => {
+        inp.onkeypress = function (keys) {
             if (keys.key === 'Enter') {
                 generateTable();
             }
         }
 
-        let generateTable = () => {
-            let num = parseInt(inp.value)
-            let displayText = "<h5 class='text-dark bg-light py-1'>Table of " + num + "</h5>";
+        var generateTable = function () {
+            var num = parseInt(inp.value);
+            var displayText = "<h5 class='text-dark bg-light py-1'>Table of " + num + "</h5>";
             if (inp.value !== '' && num != 'NaN' && num != 0) {
-                let i = 1
-                // console.log(num)
+                var i = 1;
                 do {
-                    displayText += `
-                        ${num} X ${i} = <code>${num * i}</code> <br>
-                    `;
+                    displayText += `${num} X ${i} = <code>${num * i}</code> <br>`;
                     i++
                 } while (i <= 10)
                 displayTextElement.innerHTML = displayText;
 
             } else {
-                console.log('not')
+                console.log('Please check your input')
             }
-
-
         }
-
-
-        let resetTable = () => {
+        var resetTable = function () {
             displayTextElement.innerHTML = '';
-
-        }
-
-
-        let advancedMode = () => {
-            console.log('advanced mode')
         }
     </script>
 </body>
